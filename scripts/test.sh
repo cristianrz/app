@@ -26,7 +26,7 @@ run_test(){
 	fi
 }
 
-for test in ./test/*; do
+for test in ./tests/*; do
 	run_test "$test"
 done
 
