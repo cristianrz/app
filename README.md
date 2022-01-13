@@ -8,6 +8,7 @@ premises:
 * should work in such a way that the user can do any of the package manager
   functions trivially
 * should allow for the developer to make it work with any programming language
+* a user should be able to install the package without reading any documentation
 
 This implies that:
 
