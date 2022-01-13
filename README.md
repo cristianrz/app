@@ -1,38 +1,79 @@
 # app
 
-One Paragraph of project description goes here
+app is an attempt of a simple universal package manager with the following
+premises:
+
+* should have no dependencies, should be able to run just with something like
+  busybox installed
+* should work in such a way that the user can do any of the package manager
+  functions trivially
+* should allow for the developer to make it work with any programming language
+
+This implies that:
+
+* app is written in POSIX shell
+* app is based on scripts such as `install.sh`, `build.sh`, `test.sh`
+* there are very minimal restrictions in terms of what the scripts can do as
+  long as they accomplish their purpose
+
+## Dependencies
+
+* `/bin/sh` 
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on
-your local machine for development and testing purposes. See deployment
-for notes on how to deploy the project on a live system.
+To get `app` up and running:
 
-### Prerequisites
+```bash
+# Pull the repo
+git clone https://github.com/cristianrz/app.git
+cd app
 
-What things you need to install the software and how to install them
+# Build 
+sh scripts/build.sh
 
-* Give examples
+# edit the path where you want app installed
+vi scripts/install.sh
 
-### Installing
+# Install
+$ sh scripts/install.sh
+```
 
-A step by step series of examples that tell you how to get a development
-env running
+To start using it:
 
-Say what the step will be
+```bash
+# Pull a package
+app pull https://github.com/cristianrz/hello-world/archive/refs/tags/v0.0.1.tar.gz
+cd hello-world-0.0.1
 
-	 Give the example
+# Build it
+app build
 
-And repeat
+# Edit install directory
+vi scripts/install.sh
 
-	 until finished
+# and install
+app install
+```
 
-End with an example of getting some data out of the system or using it
-for a little demo
+Available commands:
 
-### How to use
+```terminal
+$ app                                                                               
+Usage: app [COMMAND]
 
-How to use the program.
+Commands:
+	build    Builds the package
+	chroot   Creates a chroot with the package
+	help     Shows this help
+	init     Initialises the package
+	install  Installs the package
+	pull     Downloads a package from a git repository
+	run      Runs the package
+	test     Tests the package
+```
+
+Detailed usage on the [wiki](https://cristianrz.github.io/app/).
 
 ## Authors
 
