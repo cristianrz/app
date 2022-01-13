@@ -1,4 +1,4 @@
-# app
+# Introduction
 
 app is an attempt of a simple universal package manager with the following
 premises:
