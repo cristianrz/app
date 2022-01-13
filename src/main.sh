@@ -202,6 +202,7 @@ build) sh scripts/build.sh ;;
 init) init ;;
 install) sh scripts/install.sh ;;
 run) sh scripts/run.sh ;;
+clean) rm -rf build ;;
 test) sh scripts/test.sh ;;
 chroot) sh scripts/chroot.sh ;;
 pull) shift && pull "$@" ;;
