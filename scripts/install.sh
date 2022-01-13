@@ -12,4 +12,4 @@ cp build/* "$APPDIR"
 
 cd "$PREFIX/bin"
 
-ln -s ../app-$VERSION/app app
+ln -s "../app-$VERSION/app" app
