@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 
-sh scripts/clean.sh
+rm -rf build
 
 mkdir build
 

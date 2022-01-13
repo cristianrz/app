@@ -169,7 +169,6 @@ init() {
 	done
 
 	echo "mkdir build" >"scripts/build.sh"
-	echo "rm -rf build" >"scripts/clean.sh"
 	echo "v0.0.1" > "VERSION"
 
 	touch "src/main.$ext" "test.sh"
@@ -200,7 +199,6 @@ PROGRAM="$(basename "$0")"
 
 case "$1" in
 build) sh scripts/build.sh ;;
-clean) sh scripts/clean.sh ;;
 init) init ;;
 install) sh scripts/install.sh ;;
 run) sh scripts/run.sh ;;
