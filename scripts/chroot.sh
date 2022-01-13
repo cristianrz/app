@@ -1,9 +1,9 @@
 #!/bin/sh
-
 set -eu
-HERE="$(pwd)"
 
 PREFIX="/mnt/app"
+
+HERE="$(pwd)"
 
 mkdir -p "$PREFIX"
 
@@ -13,7 +13,7 @@ wget 'https://dl-cdn.alpinelinux.org/alpine/latest-stable/releases/aarch64/alpin
 
 tar xzvf alpine-minirootfs-3.15.0-aarch64.tar.gz
 
-rm *tar.gz
+rm ./*tar.gz
 
 mount -t      proc  /proc "$PREFIX/proc"
 mount -t      sysfs /sys  "$PREFIX/sys"
