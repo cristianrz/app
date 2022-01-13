@@ -1,14 +1,15 @@
 #!/bin/sh
 set -eu
 
+PREFIX="/usr/local"
+
 VERSION="$(cat VERSION)"
+APPDIR="$PREFIX/app-$VERSION"
 
-PREFIX="/usr/local/stow/app-$VERSION/bin"
+mkdir -p "$APPDIR"
 
-mkdir -p "$PREFIX"
+cp build/* "$APPDIR"
 
-cp build/* "$PREFIX"
+cd "$PREFIX/bin"
 
-cd "/usr/local/stow"
-
-stow "app-$VERSION"
+ln -s ../app-$VERSION/app app

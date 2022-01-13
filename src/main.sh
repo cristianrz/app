@@ -4,7 +4,7 @@ set -eu
 
 init_test() {
 
-	cat <<'EOF' >"test.sh"
+	cat <<'EOF' >"scripts/test.sh"
 #!/bin/sh
 
 set -eu
@@ -33,7 +33,7 @@ run_test(){
 	fi
 }
 
-for test in ./test/*; do
+for test in ./tests/*; do
 	run_test "$test"
 done
 
@@ -156,15 +156,16 @@ init() {
 
 	mkdir -p "docs" \
 		"src" \
-		"test"
+		"tests" \
+		"scripts"
 
-	for script in "scripts/install.sh" "scripts/run.sh" "test/test.$ext"; do
+	for script in "scripts/install.sh" "scripts/chroot.sh" "scripts/run.sh" "tests/test.$ext"; do
 		if [ -f "$script" ]; then
 			printf "%s already exists. Exiting." "$script" >&2
 			exit 1
 		fi
 
-		echo "echo TODO; exit 1" >"$script"
+		echo "echo 'TODO: $script script.'; exit 1" >"$script"
 	done
 
 	echo "mkdir build" >"scripts/build.sh"
@@ -174,7 +175,7 @@ init() {
 	touch "src/main.$ext" "test.sh"
 
 
-	git init
+	git init >/dev/null 2>&1
 
 	init_index
 	init_license
@@ -189,7 +190,7 @@ pull(){
 	FILE="$(basename "$1")"
 	wget "$1"
 
-	tar xzvf "$FILE"
+	tar xzf "$FILE"
 	rm "$FILE"
 }
 
@@ -205,7 +206,7 @@ install) sh scripts/install.sh ;;
 run) sh scripts/run.sh ;;
 test) sh scripts/test.sh ;;
 chroot) sh scripts/chroot.sh ;;
-pull) pull "$@" ;;
+pull) shift && pull "$@" ;;
 *)
 	cat <<EOF
 Usage: $PROGRAM [COMMAND]
